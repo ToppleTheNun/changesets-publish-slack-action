@@ -14,7 +14,7 @@ import { publishedPackagesSchema } from "./schema";
     JSON.parse(publishedPackagesInput)
   );
   const repo = `${github.context.repo.owner}/${github.context.repo.repo}`;
-  const message = `🦋 A new version of [${repo}](https://github.com/${repo}) has been published!!\n\`\`\`${publishedPackages.map(
+  const message = `🦋 A new version of <${repo}|https://github.com/${repo}> has been published!!\n\`\`\`${publishedPackages.map(
     (x) => `${x.name}@${x.version}`
   )}\`\`\``;
 
