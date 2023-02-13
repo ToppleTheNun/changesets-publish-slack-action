@@ -1,0 +1,17 @@
+name: Changesets
+description: A GitHub Action to publish to Slack after Changesets performs a release
+author: "Richard Harrah"
+inputs:
+  dryRun:
+    description: "Should this be performed as a dry run?"
+    required: false
+    default: "false"
+  publishedPackages:
+    description: "Packages that were published by Changesets; should be a JSON array of items with a name and version."
+    required: true
+  slackWebhook:
+    description: "Slack webhook to which notifications will be sent."
+    required: true
+runs:
+  using: "node16"
+  main: "dist/index.js"
