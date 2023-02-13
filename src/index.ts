@@ -5,6 +5,7 @@ import { notifySlackWebhook } from "./notify";
 import { publishedPackagesSchema } from "./schema";
 
 (async () => {
+  const dryRun = core.getBooleanInput("dryRun");
   const webhook = core.getInput("slackWebhook", { required: true });
   const publishedPackagesInput = core.getInput("publishedPackages", {
     required: true,
@@ -17,7 +18,12 @@ import { publishedPackagesSchema } from "./schema";
     (x) => `${x.name}@${x.version}`
   )}\`\`\``;
 
-  await notifySlackWebhook(webhook, message);
+  if (!dryRun) {
+    await notifySlackWebhook(webhook, message);
+  } else {
+    console.log("Dry run enabled, printing message instead!");
+    console.log(message);
+  }
 })().catch((e) => {
   console.error(e);
   if (
