@@ -5,6 +5,7 @@
   "author": "Richard Harrah",
   "license": "MIT",
   "private": true,
+  "packageManager": "pnpm@7.27.0",
   "main": "src/index.ts",
   "keywords": [],
   "scripts": {
