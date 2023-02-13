@@ -63,7 +63,7 @@ jobs:
         run: pnpm run test
 
   integration-test:
-    name: ⚡ Test
+    name: ⚡ Integration Test
     runs-on: ubuntu-latest
     steps:
       - name: 🛑 Cancel Previous Runs
