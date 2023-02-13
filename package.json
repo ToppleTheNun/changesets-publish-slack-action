@@ -26,6 +26,7 @@
   },
   "devDependencies": {
     "@semantic-release/exec": "^6.0.3",
+    "@semantic-release/git": "^10.0.1",
     "@tsconfig/node-lts-strictest": "^18.12.1",
     "@types/node": "^18.13.0",
     "@typescript-eslint/eslint-plugin": "^5.51.0",
@@ -55,13 +56,23 @@
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
-      "@semantic-release/github",
       [
         "@semantic-release/exec",
         {
           "prepareCmd": "pnpm run build"
         }
-      ]
+      ],
+      [
+        "@semantic-release/git",
+        {
+          "assets": [
+            "CHANGELOG.md",
+            "package.json",
+            "dist/**"
+          ]
+        }
+      ],
+      "@semantic-release/github"
     ]
   }
 }
