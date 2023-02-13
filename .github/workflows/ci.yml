@@ -10,9 +10,6 @@ permissions:
   actions: write
   contents: write
 
-env:
-  GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
 jobs:
   lint:
     name: ⬣ ESLint
@@ -106,5 +103,5 @@ jobs:
       - name: 🚀 Semantic Release
         run: pnpm dlx semantic-release
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NODE_AUTH_TOKEN }}
+          GH_TOKEN: ${{ secrets.TAG_PAT }}
+          GITHUB_TOKEN: ${{ secrets.TAG_PAT }}
