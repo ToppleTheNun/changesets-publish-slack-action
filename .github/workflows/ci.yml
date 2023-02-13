@@ -83,7 +83,7 @@ jobs:
         with:
           dryRun: true
           publishedPackages: '[{"name":"changesets-publish-slack-action","version":"0.0.0-semantic-release"}]'
-          slackWebhook: ""
+          slackWebhook: "invalid-slack-webhook"
 
   release:
     name: 🚀 Release
