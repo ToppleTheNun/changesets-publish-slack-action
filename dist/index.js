@@ -17674,7 +17674,10 @@ const schema_1 = __nccwpck_require__(2488);
     });
     const publishedPackages = schema_1.publishedPackagesSchema.parse(JSON.parse(publishedPackagesInput));
     const repo = `${github.context.repo.owner}/${github.context.repo.repo}`;
-    const message = `🦋 A new version of <${repo}|https://github.com/${repo}> has been published!!\n\`\`\`${publishedPackages.map((x) => `${x.name}@${x.version}`)}\`\`\``;
+    const joinedPublishedPackages = publishedPackages
+        .map((x) => `${x.name}@${x.version}`)
+        .join("\n");
+    const message = `🦋 A new version of <${repo}|https://github.com/${repo}> has been published!!\n\`\`\`${joinedPublishedPackages}\`\`\``;
     if (!dryRun) {
         await (0, notify_1.notifySlackWebhook)(webhook, message);
     }
