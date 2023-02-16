@@ -17677,7 +17677,7 @@ const schema_1 = __nccwpck_require__(2488);
     const joinedPublishedPackages = publishedPackages
         .map((x) => `${x.name}@${x.version}`)
         .join("\n");
-    const message = `🦋 A new version of <${repo}|https://github.com/${repo}> has been published!!\n\`\`\`${joinedPublishedPackages}\`\`\``;
+    const message = `🦋 A new version of <https://github.com/${repo}|${repo}> has been published!!\n\`\`\`${joinedPublishedPackages}\`\`\``;
     if (!dryRun) {
         await (0, notify_1.notifySlackWebhook)(webhook, message);
     }
