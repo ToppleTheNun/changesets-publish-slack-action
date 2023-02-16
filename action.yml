@@ -6,6 +6,10 @@ inputs:
     description: "Should this be performed as a dry run?"
     required: false
     default: "false"
+  linkRoot:
+    description: "Root of link to repository"
+    required: false
+    default: "https://github.com"
   publishedPackages:
     description: "Packages that were published by Changesets; should be a JSON array of items with a name and version."
     required: true

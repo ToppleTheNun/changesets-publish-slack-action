@@ -2,6 +2,7 @@ import * as core from "@actions/core";
 import * as github from "@actions/github";
 
 import { notifySlackWebhook } from "./notify";
+import { publishedMessage } from "./publishedMessage";
 import { publishedPackagesSchema } from "./schema";
 
 (async () => {
@@ -10,17 +11,20 @@ import { publishedPackagesSchema } from "./schema";
   const publishedPackagesInput = core.getInput("publishedPackages", {
     required: true,
   });
+  const linkRoot = core.getInput("linkRoot") || "https://github.com";
+
   const publishedPackages = publishedPackagesSchema.parse(
     JSON.parse(publishedPackagesInput)
   );
   const repo = `${github.context.repo.owner}/${github.context.repo.repo}`;
-  const joinedPublishedPackages = publishedPackages
-    .map((x) => `${x.name}@${x.version}`)
-    .join("\n");
-  const message = `🦋 A new version of <https://github.com/${repo}|${repo}> has been published!!\n\`\`\`${joinedPublishedPackages}\`\`\``;
+  const message = publishedMessage(
+    publishedPackages,
+    `${linkRoot}/${repo}`,
+    repo
+  );
 
   if (!dryRun) {
-    await notifySlackWebhook(webhook, message);
+    await notifySlackWebhook(webhook, message.buildToJSON());
   } else {
     console.log("Dry run enabled, printing message instead!");
     console.log(message);
