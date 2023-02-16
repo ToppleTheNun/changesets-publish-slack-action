@@ -15,13 +15,15 @@
     "lint": "eslint --format stylish --max-warnings 0 --cache .",
     "lint:fix": "eslint --format stylish --max-warnings 0 --cache . --fix",
     "prepare": "is-ci || husky install",
-    "pretty-quick": "pretty-quick",
+    "pretty-quick": "pretty-quick --staged",
     "test": "vitest"
   },
   "dependencies": {
     "@actions/core": "^1.10.0",
     "@actions/github": "^5.1.1",
     "node-fetch": "^3.3.0",
+    "slack-block-builder": "^2.7.2",
+    "ts-dedent": "^2.2.0",
     "zod": "^3.20.6"
   },
   "devDependencies": {

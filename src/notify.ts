@@ -6,14 +6,7 @@ export const notifySlackWebhook = async (
 ) => {
   const response = await fetch(webhookUrl, {
     method: "POST",
-    body: JSON.stringify({
-      blocks: [
-        {
-          type: "section",
-          text: { type: "mrkdwn", text: message },
-        },
-      ],
-    }),
+    body: message,
   });
   return response.text();
 };

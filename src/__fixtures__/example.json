@@ -1,0 +1,19 @@
+{
+  "as_user": true,
+  "blocks": [
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": ":butterfly: A new version of <https://github.com/test/test|test/test> has been published!"
+      }
+    },
+    {
+      "type": "section",
+      "text": {
+        "type": "mrkdwn",
+        "text": "```test@0.0.0```"
+      }
+    }
+  ]
+}
